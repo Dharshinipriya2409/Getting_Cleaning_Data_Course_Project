@@ -46,7 +46,7 @@ names(merged_mean_std) <- gsub("BodyGyro", "Body_gyroscope", names(merged_mean_s
 #5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 #Grouping dataset for activity and subject
 group_merged_mean_std <- group_by(merged_mean_std,ActivityName,Subject)
-#After grouping calculate average for all columns - each variable
+#After grouping calculate average for all columns - each variable - new dataset
 merged_avg <- group_merged_mean_std %>% mutate(across(everything(), mean, na.rm = TRUE))
-#Create a new dataset
+#Create a txt file to export and submit assignment
 write.table(merged_avg, "merged_avg.txt", row.name=FALSE)
